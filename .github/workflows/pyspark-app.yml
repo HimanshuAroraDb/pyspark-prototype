@@ -24,6 +24,7 @@ jobs:
       run: |
         pip install pytest requests setuptools wheel
         pip install -U databricks-connect==6.4.*
+        pip install install-jdk
         pip install pyspark==3.1.2
     - name: Test with unittest
       run: |
