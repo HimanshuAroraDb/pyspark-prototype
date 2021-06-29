@@ -9,7 +9,8 @@ trigger:
     include:
     - master
 
-pool: MyPool
+pool:
+ vmImage: 'Ubuntu 16.04'
 
 # Install Python. The version must match the version on the Databricks cluster.
 steps:
