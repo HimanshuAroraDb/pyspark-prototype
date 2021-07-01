@@ -16,11 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        java-version: '11'
-        distribution: 'adopt'
     - name: Set up Python 3.7
       uses: actions/setup-python@v2
       with:
@@ -31,6 +26,10 @@ jobs:
         pip install -U databricks-connect==6.4.*
         pip install install-jdk
         pip install pyspark==3.1.2
+        add-apt-repository ppa:webupd8team/java
+        apt-get update
+        apt-get install oracle-java8-installer
+        echo $JAVA_HOME
         export PYSPARK_SUBMIT_ARGS="--master local[2] pyspark-shell"
         export PATH=$JAVA_HOME/bin:$PATH
     - name: Test with unittest
