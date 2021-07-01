@@ -32,6 +32,7 @@ jobs:
         pip install install-jdk
         pip install pyspark==3.1.2
         export PYSPARK_SUBMIT_ARGS="--master local[2] pyspark-shell"
+        export PATH=$JAVA_HOME/bin:$PATH
     - name: Test with unittest
       run: |
         python -m unittest tests/test_*.py
