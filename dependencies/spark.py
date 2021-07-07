@@ -11,6 +11,7 @@ from os import environ, listdir, path
 import json
 from pyspark import SparkFiles
 from pyspark.sql import SparkSession
+from pyspark import  SQLContext
 
 from dependencies import logging
 
