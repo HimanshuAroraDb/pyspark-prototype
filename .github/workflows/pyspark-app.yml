@@ -31,7 +31,8 @@ jobs:
         sudo apt-get install openjdk-8-jdk
         sudo update-alternatives --config java
         echo $JAVA_HOME
+        export PYSPARK_SUBMIT_ARGS="--master local[2] pyspark-shell"
         export PATH=$JAVA_HOME/bin:$PATH
     - name: Test with unittest
       run: |
-        python -m unittest tests/test_*.py
+        pyspark
