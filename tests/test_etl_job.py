@@ -11,7 +11,7 @@ import unittest
 import json
 
 from pyspark.sql.functions import mean
-
+from pyspark.sql import SparkSession
 from dependencies.spark import start_spark
 from jobs.etl_job import transform_data
 
@@ -32,7 +32,7 @@ class SparkETLTests(unittest.TestCase):
         """Start Spark, define config and path to test data
         """
         self.config = json.loads("""{"steps_per_floor": 21, "output_path": "./tests/out"}""")
-        self.spark = create_testing_pyspark_session(self)
+        self.spark = self.create_testing_pyspark_session()
         self.test_data_path = 'tests/test_data/'
 
     def tearDown(self):
