@@ -14,25 +14,27 @@ from pyspark.sql.functions import mean
 
 from dependencies.spark import start_spark
 from jobs.etl_job import transform_data
+from pyspark.sql import SparkSession
+from pyspark import  SQLContext
 
 
 class SparkETLTests(unittest.TestCase):
     """Test suite for transformation in etl_job.py
     """
 
-    def setUp(self):
-        """Start Spark, define config and path to test data
-        """
-        def create_testing_pyspark_session(self):
-            return (
+    def create_testing_pyspark_session(self):
+        return (
             SparkSession.builder
             .master('local[2]')
             .appName('my - local - testing - pyspark - context')
             .enableHiveSupport()
             .getOrCreate())
-            
+
+    def setUp(self):
+        """Start Spark, define config and path to test data
+        """
         self.config = json.loads("""{"steps_per_floor": 21, "output_path": "./tests/out"}""")
-        self.spark = create_testing_pyspark_session(self)
+        self.spark = self.create_testing_pyspark_session()
         self.test_data_path = 'tests/test_data/'
 
     def tearDown(self):
