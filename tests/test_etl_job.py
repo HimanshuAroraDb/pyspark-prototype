@@ -15,6 +15,7 @@ from pyspark.sql.functions import mean
 from dependencies.spark import start_spark
 from jobs.etl_job import transform_data
 from pyspark.sql import SparkSession
+from pyspark import  SQLContext
 
 class SparkETLTests(unittest.TestCase):
     """Test suite for transformation in etl_job.py
