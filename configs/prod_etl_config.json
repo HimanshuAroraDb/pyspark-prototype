@@ -1,0 +1,4 @@
+{
+  "steps_per_floor": 21,
+  "output_path": "dbfs:/tmp/pyspark-prototype/out"
+}
