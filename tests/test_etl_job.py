@@ -33,7 +33,7 @@ class SparkETLTests(unittest.TestCase):
         """Start Spark, define config and path to test data
         """
         self.config = json.loads("""{"steps_per_floor": 21, "output_path": "./tests/out"}""")
-        self.spark = self.create_testing_pyspark_session()
+        self.spark = start_spark()
         self.test_data_path = 'tests/test_data/'
 
     def tearDown(self):
