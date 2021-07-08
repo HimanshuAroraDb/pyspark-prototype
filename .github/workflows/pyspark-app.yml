@@ -31,3 +31,7 @@ jobs:
     - name: Test with unittest
       run: |
         pipenv run python -m unittest tests/test_*.py
+    - name: Package deployment artifact
+      run: |
+        ./build_dependencies.sh
+        ls -alr
