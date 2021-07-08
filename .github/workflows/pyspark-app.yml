@@ -37,7 +37,7 @@ jobs:
         $db_token" | pipenv run databricks configure --token
     - name: Test with unittest
       run: |
-        python -m unittest tests/test_*.py
+        pipenv run python -m unittest tests/test_*.py
     - name: Package deployment artifact
       run: |
         ./build_dependencies.sh
