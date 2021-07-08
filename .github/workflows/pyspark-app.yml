@@ -23,14 +23,12 @@ jobs:
     - uses: actions/setup-java@v1
       with:
         java-version: '11'
-    - uses: vemonet/setup-spark@v1
-      with:
-        spark-version: '3.1.2'
-        hadoop-version: '3.2'
     - name: Install dependencies
       run: |
-        echo $JAVA_HOME
+        sudo apt install python3-pip
+        python3 -m pip install --user pipenv
+        pipenv install --dev
     - name: Test with unittest
       run: |
         pyspark
-        python -m unittest tests/test_*.py
+        pipenv run python -m unittest tests/test_*.py
