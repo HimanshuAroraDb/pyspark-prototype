@@ -28,6 +28,7 @@ jobs:
         sudo apt install python3-pip
         python3 -m pip install --user pipenv
         pipenv install --dev
+        pipenv shell
     - name: Configure Databricks CLI
       env:
         db_host: ${{ secrets.DATABRICKS_URL }}
@@ -37,7 +38,7 @@ jobs:
         $db_token" | databricks configure --token
     - name: Test with unittest
       run: |
-        pipenv run python -m unittest tests/test_*.py
+        python -m unittest tests/test_*.py
     - name: Package deployment artifact
       run: |
         ./build_dependencies.sh
