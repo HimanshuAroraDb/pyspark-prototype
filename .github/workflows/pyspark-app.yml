@@ -41,3 +41,7 @@ jobs:
     - name: Package deployment artifact
       run: |
         ./build_dependencies.sh
+    - name: Deploy artifact
+       run: |
+         pipenv run databricks fs cp ./packages.zip dbfs:/tmp/himanshu
+
