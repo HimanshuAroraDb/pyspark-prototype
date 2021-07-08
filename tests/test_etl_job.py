@@ -21,14 +21,6 @@ class SparkETLTests(unittest.TestCase):
     """Test suite for transformation in etl_job.py
     """
 
-    def create_testing_pyspark_session(self):
-        return (
-            SparkSession.builder
-            .master('local[2]')
-            .appName('my - local - testing - pyspark - context')
-            .enableHiveSupport()
-            .getOrCreate())
-
     def setUp(self):
         """Start Spark, define config and path to test data
         """
